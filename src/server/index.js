@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // MeaningCloud API
-var textapi = new aylien({
+var textapi = new meaningCloud({
   application_key: "80a96f2f4482bc869631fea505b4d021",
 });
 
