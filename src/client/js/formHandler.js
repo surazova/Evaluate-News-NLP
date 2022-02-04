@@ -1,4 +1,5 @@
-function handleSubmit(event) {
+function submitURL(event) {
+  // if the event does not get explicitly handled, its default action should not be taken as it normally would be.
   event.preventDefault();
 
   let formText = document.getElementById("url").value;
@@ -17,7 +18,7 @@ function handleSubmit(event) {
       ).innerHTML = `Confidence: ${res.confidence}`;
       document.getElementById("irony").innerHTML = `Irony: ${res.irony}`;
       document.getElementById("polarity").innerHTML =
-        "Polarity: " + polarityChecker(res.score_tag);
+        "Polarity: " + checkForPolarity(res.score_tag);
       document.getElementById(
         "subjectivity"
       ).innerHTML = `Subjectivity: ${res.subjectivity}`;
@@ -26,6 +27,29 @@ function handleSubmit(event) {
     alert("URL Not Valid.");
   }
 }
+
+const checkForPolarity = (score) => {
+  let display;
+  switch (score) {
+    case "P+":
+      display = "Strong-Positive";
+      break;
+    case "P":
+      display = "Positive";
+      break;
+    case "NEW":
+      display = "Neutral";
+      break;
+    case "N":
+      display = "Negative";
+      break;
+    case "N+":
+      display = "Strong-Negative";
+      break;
+    case "NONE":
+      display = "No-Sentiment";
+  }
+};
 
 const postData = async (url = "", data = {}) => {
   console.log("Reaching:", data);
@@ -47,28 +71,5 @@ const postData = async (url = "", data = {}) => {
   }
 };
 
-const polarityChecker = (score) => {
-  let display;
-  switch (score) {
-    case "P+":
-      display = "Strong Positive";
-      break;
-    case "P":
-      display = "Positive";
-      break;
-    case "NEW":
-      display = "Neutral";
-      break;
-    case "N":
-      display = "Negative";
-      break;
-    case "N+":
-      display = "Strong Negative";
-      break;
-    case "NONE":
-      display = "No Sentiment";
-  }
-};
-
-export { handleSubmit };
-export { polarityChecker };
+export { submitURL };
+export { checkForPolarity };
