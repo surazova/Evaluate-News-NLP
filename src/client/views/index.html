@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sentiment Reader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+  </head>
 
-    <body>
+  <body>
+    <header>
+      <h1>Sentiment Reader</h1>
+        <div id="introduction">
+          <p>
+            <i> noun. </i>
+              <ol>
+                <li>A view of or attitude toward a situation or event; an opinion.</li>
+                <li>Exaggerated and self-indulgent feelings of tenderness, sadness, or
+                  nostalgia.</li>
+              </ol>
+          </p>
+        </div>
+    </header>
+    <main>
+      <section>
+          <div id="rules">     
+          <p>Enter the URL of an article or blog to analyze its sentiment.</p>
+        </div>
+        <form class="" onsubmit="return Client.handleSubmit(event)">
+          <input
+            id="url"
+            type="text"
+            name="input"
+            value=""
+            placeholder="Enter URL here"
+          />
+          <input
+          id="SubmitButton"
+            type="submit"
+            name=""
+            value="submit"
+            onclick="return Client.handleSubmit(event)"
+            onsubmit="return handleSubmit(event)"
+          />
+        </form>
+      </section>
+      <div id ="results">
+        <strong>Your Results:</strong>
+        <div id="agreement"></div>
+        <div id="confidence"></div>
+        <div id="irony"></div>
+        <div id="polarity"></div>
+        <div id="subjectivity"></div>
+      </div>
+    </main>
 
-        <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
-        </header>
+    <footer></footer>
 
-        <main>
-            <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
-                </form>
-            </section>
-
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
-            </section>
-        </main>
-
-        <footer>
-            <p>This is a footer</p>
-        </footer>
-
-    </body>
+    <script>
+      // Service Worker
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
+    </script>
+  </body>
 </html>

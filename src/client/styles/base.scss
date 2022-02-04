@@ -1,0 +1,58 @@
+$primary-font: "Major Mono Display", monospace;
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: 18px;
+}
+
+main {
+  flex: 2;
+  justify-content: center;
+  text-align: center;
+  margin: 12px;
+  // background: red;
+  // font-family: "Major Mono Display", monospace;
+  font: $primary-font;
+}
+
+ol {
+  list-style-type: numeric;
+  padding-left: 20px;
+}
+
+p {
+  margin: 12px;
+  justify-content: left;
+}
+
+section {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+#rules {
+  color: blue;
+  font-family: "Major Mono Display", monospace;
+}
+
+#results {
+  max-width: 600px;
+  margin: 30px auto;
+  color: rgb(136, 52, 52);
+  font-family: "Major Mono Display", monospace;
+  border: 3px solid yellow;
+  border-radius: 10px;
+  max-width: 600px;
+  display: block;
+  justify-content: right;
+  padding: 40px 50px;
+  font-size: 20px;
+  text-align: left;
+}
+
+#results:hover {
+  border: 3px solid black;
+}
